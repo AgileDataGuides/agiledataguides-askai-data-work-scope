@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# The markdown transcriptions in pattern-templates/ are canonical (Claude reads
+# markdown at full fidelity; image exports get downscaled and need OCR), so image
+# exports stay local. The .pptx source examples ARE published.
+*.jpg
+*.jpeg
+*.png

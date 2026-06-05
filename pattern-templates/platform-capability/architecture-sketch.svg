@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" role="img" aria-label="Architecture Sketch: AI Analyst — generic LLM-agent reference pattern">
+  <style>
+    text { font-family: 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif; }
+    .box { rx: 10; }
+    .lbl { fill: #1e3a8a; font-size: 14.5px; font-weight: 600; }
+    .lbl2 { fill: #334155; font-size: 14px; font-weight: 600; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="880" height="600" fill="#f8fafc"/>
+
+  <!-- title -->
+  <text x="40" y="40" fill="#0f172a" font-size="24" font-weight="700">Architecture Sketch: AI Analyst</text>
+  <text x="40" y="64" fill="#64748b" font-size="13">Generic LLM-agent reference pattern: the HOW the team put forward, not yet mapped to the AgileData stack.</text>
+
+  <!-- USER INPUT -->
+  <rect class="box" x="70" y="96" width="150" height="46" rx="10" fill="#fde68a" stroke="#d97706" stroke-width="2"/>
+  <text x="145" y="124" text-anchor="middle" fill="#78350f" font-size="14.5" font-weight="700">USER INPUT</text>
+
+  <!-- arrow: user input -> agent core -->
+  <line x1="145" y1="142" x2="145" y2="187" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- AGENT CORE / LLM (the hub) -->
+  <rect class="box" x="60" y="190" width="170" height="295" rx="12" fill="#4f46e5" stroke="#3730a3" stroke-width="2"/>
+  <text x="145" y="330" text-anchor="middle" fill="#ffffff" font-size="17" font-weight="700">AGENT CORE</text>
+  <text x="145" y="353" text-anchor="middle" fill="#e0e7ff" font-size="15" font-weight="600">/ LLM</text>
+  <text x="145" y="378" text-anchor="middle" fill="#c7d2fe" font-size="11.5" font-style="italic">the reasoning hub</text>
+
+  <!-- first-level component boxes -->
+  <rect class="box" x="320" y="198" width="160" height="46" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="226" text-anchor="middle" class="lbl">PLANNING</text>
+
+  <rect class="box" x="320" y="258" width="160" height="46" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="286" text-anchor="middle" class="lbl">MEMORY</text>
+
+  <rect class="box" x="320" y="318" width="160" height="46" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="346" text-anchor="middle" class="lbl">OUTPUT</text>
+
+  <rect class="box" x="320" y="378" width="160" height="46" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="400" y="406" text-anchor="middle" class="lbl">TOOLS</text>
+
+  <rect class="box" x="320" y="438" width="160" height="46" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="400" y="466" text-anchor="middle" fill="#991b1b" font-size="14.5" font-weight="600">CRITIC</text>
+
+  <!-- second-level boxes -->
+  <rect class="box" x="540" y="198" width="180" height="46" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="630" y="226" text-anchor="middle" class="lbl2">TAKE STEPS</text>
+
+  <rect class="box" x="540" y="258" width="180" height="46" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="630" y="286" text-anchor="middle" class="lbl2">CONTEXT / HISTORY</text>
+
+  <rect class="box" x="540" y="378" width="180" height="46" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="630" y="406" text-anchor="middle" class="lbl2">APIS / DB / CODE</text>
+
+  <rect class="box" x="540" y="438" width="180" height="46" rx="10" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="630" y="466" text-anchor="middle" fill="#991b1b" font-size="14.5" font-weight="600">VALIDATION</text>
+
+  <!-- exit: output -> answer to consumer -->
+  <rect class="box" x="540" y="318" width="180" height="46" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="630" y="345" text-anchor="middle" fill="#475569" font-size="12.5" font-style="italic">answer to the consumer</text>
+
+  <!-- arrows: agent core -> first-level -->
+  <line x1="232" y1="221" x2="318" y2="221" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="232" y1="281" x2="318" y2="281" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="232" y1="341" x2="318" y2="341" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="232" y1="401" x2="318" y2="401" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="232" y1="461" x2="318" y2="461" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- arrows: first-level -> second-level -->
+  <line x1="482" y1="221" x2="538" y2="221" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="482" y1="281" x2="538" y2="281" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="482" y1="341" x2="538" y2="341" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <line x1="482" y1="401" x2="538" y2="401" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="482" y1="461" x2="538" y2="461" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- feedback loop: validation -> back into agent core -->
+  <path d="M720,461 H790 V165 H200 V187" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <text x="495" y="158" text-anchor="middle" fill="#dc2626" font-size="11.5" font-weight="600">Critic validates the result, then loops back into the Agent Core before the answer is trusted</text>
+
+  <!-- legend -->
+  <line x1="70" y1="535" x2="100" y2="535" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="106" y="539" fill="#334155" font-size="12">Flow / call</text>
+
+  <line x1="205" y1="535" x2="235" y2="535" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowRed)"/>
+  <text x="241" y="539" fill="#334155" font-size="12">Validation feedback</text>
+
+  <rect x="400" y="527" width="16" height="16" rx="3" fill="#4f46e5"/>
+  <text x="422" y="539" fill="#334155" font-size="12">Reasoning hub</text>
+
+  <rect x="540" y="527" width="16" height="16" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="562" y="539" fill="#334155" font-size="12">Agent component</text>
+
+  <rect x="700" y="527" width="16" height="16" rx="3" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="722" y="539" fill="#334155" font-size="12">Sub-step / external</text>
+</svg>
