@@ -1,21 +1,38 @@
 # AskAI: Scope the Work
 
-A Claude skill for AgileData data teams. You have been handed a vision and asked to build it. This skill helps you **understand the scope**: what's clear, what's unclear, and the sharp questions to resolve. It turns the gap between "here is the vision" and "here is the first table I write" into shared understanding before anyone builds, and answers your what / how / why along the way.
+A Claude skill for AgileDataGuide data teams. You have been handed a vision and asked to build it. This skill helps you **understand the scope**: what's clear, what's unclear, and the sharp questions to resolve. It turns the gap between "here is the vision" and "here is the first table I write" into shared understanding before anyone builds, and answers your what / how / why along the way.
 
 ## What you bring
 
 A **why**, a **what**, and a **how**. The **what** comes in one of two forms, depending on the kind of work:
 
-| Layer | Artefact | Use when |
+| W | Pattern Template | Use when |
 |---|---|---|
 | **why** | Mission Statement | the strategic outcome (umbrella over the work) |
 | **what** | **Information Product Canvas** | there is a **business problem** to solve (a stakeholder needs questions answered) |
 | **what** | **AgileData Press Release** | there is a **platform capability / tooling** to create |
-| **how** | Architecture Sketch | the sources, pipeline and outputs on the AgileData stack |
+| **how** | Architecture Sketch | the sources, pipeline and outputs on the Data Platform |
 
-Most data-team work is a business problem, so the **Information Product Canvas** is the usual "what". Use a **Press Release** when you are building reusable platform capability. A large capability can have both: a Press Release for the capability and a Canvas per Information Product under it.
+Most data-team work is a business problem, so the **Information Product Canvas** is the usual "what". Use a **Press Release** when you are building reusable platform capability. A large capability can have both: multiple Press Releases for the capabilities and a Canvas per Information Product under it.
 
-You can start with only one artefact. The skill works with what you have and tells you what the missing pieces would change.
+You can start with only one completed Pattern Template. The skill works with what you have and tells you what the missing pieces would change.
+
+## Install
+
+This is a Claude Agent Skill: install it once, and Claude loads it automatically when you ask a scoping question.
+
+**Claude Code (CLI).** Clone the repo into your personal skills directory, so it is available in every project:
+
+```bash
+git clone https://github.com/AgileDataGuides/agiledataguides-askai-data-work-scope.git \
+  ~/.claude/skills/agiledataguides-askai-data-work-scope
+```
+
+To scope just one project instead, clone into that project's `.claude/skills/` rather than `~/.claude/skills/`.
+
+**Claude Desktop or claude.ai.** Zip the cloned folder (it must contain `SKILL.md` at its root) and upload it under **Customize → Skills → Create skill**. The desktop app and the CLI keep skills separately, so install it in each tool you use.
+
+**Check it loaded.** In Claude Code, type `/` and look for `agiledataguides-askai-data-work-scope`, or ask "what skills are available?". Then trigger it by asking a scoping question (below), or explicitly with `/agiledataguides-askai-data-work-scope`.
 
 ## How to use it
 
@@ -23,7 +40,7 @@ You can start with only one artefact. The skill works with what you have and tel
 2. Ask what you want to understand: "help me understand this scope", "what's unclear here?", "what do we need to build?", "where do we start?", "why are we building this?".
 3. Claude leads with **what's clear and what's unclear** (every gap as a sharp question), answers your what / how / why with the **line of sight** in view, and lays out the full structured scope (see `assets/scope-understanding-template.md`) when you want the complete picture.
 
-If your AgileData MCP is connected to your tenancy, the skill also checks the catalog so "reuse before rebuild" is grounded in what your tenancy actually holds.
+If your LLM is connected to the MCP service for your AgileData.io tenancy, the skill also checks the Information Platform  so "reuse before rebuild" is grounded in what your tenancy actually holds.
 
 Each session is also saved as a local **session log** (`~/.claude/askai-scope-sessions/`) so the skill can be improved from real use. Say "don't log this" to opt out.
 
@@ -39,7 +56,7 @@ Each session is also saved as a local **session log** (`~/.claude/askai-scope-se
 
 ## What it does not do
 
-It builds understanding, scopes and frames. It does not author data contracts or build pipelines. Those come next, on the AgileData Golden Path: Frame → Design → Build → Verify.
+It builds understanding, scopes and frames. It does not Design, Build or Deploy the Data Work. Those come next in the AgileDataGuides Information Value Stream.
 
 ## See it work
 
