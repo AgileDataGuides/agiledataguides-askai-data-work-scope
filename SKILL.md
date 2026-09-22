@@ -1,18 +1,15 @@
 ---
 name: agiledataguides-askai-data-work-scope
 description: >
-  Help a data team understand the scope they were handed. Read their completed Pattern
-  Templates (a Mission, an Information Product Canvas or Press Release, an Architecture Sketch,
-  or a received Data Demand) and surface what is clear, what is unclear, and the sharp questions
-  to resolve before building. A Mission and a Press Release each carry both the WHY and the WHAT.
-  The Architecture Sketch the HOW. A Data Demand is a product's received ask: intent plus the
-  acceptance contract it tests delivery against.
-  Use whenever someone wants to understand data-work scope and ask questions of it:
-  "help me understand this scope", "what's unclear here", "what do we need to build", "what's the
-  smallest first slice", "why are we doing this", "is this ready to build", "what is this data
-  demand asking for". Reads gaps and contradictions and traces any build task back to the mission
-  (line of sight). Trigger with even one template. DO NOT Design, Build or Deploy: this skill
-  frames the work; the build skills come after.
+  Help a data team understand the scope they were handed: read their
+  Pattern Templates (Mission, IP Canvas or Press Release, Architecture
+  Sketch, or a received Data Demand) and surface what is clear, what is
+  unclear, and the questions to resolve before building.
+  Use on "help me understand this scope", "what's unclear here", "what
+  do we need to build", "what's the smallest first slice", "is this
+  ready to build", "what is this data demand asking for". Triggers on
+  even one template.
+  NOT for design, build or deploy: this frames the work.
 ---
 
 # AskAI: Scope the Work

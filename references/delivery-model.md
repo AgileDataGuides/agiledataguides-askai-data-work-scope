@@ -1,4 +1,4 @@
-# The AgileData delivery model
+# The AgileDataGuides Pattern Language
 
 This is the vocabulary that turns intent into buildable scope. The three artefacts describe demand (why, what, how), and a received Data Demand carries a fourth, pre-scoped ask. This model describes supply (the things a data team actually builds). Scoping is the act of meeting the demand with the supply, using these terms precisely.
 
