@@ -12,8 +12,11 @@ A **why**, a **what**, and a **how**. The **what** comes in one of two forms, de
 | **what** | **Information Product Canvas** | there is a **business problem** to solve (a stakeholder needs questions answered) |
 | **what** | **AgileData Press Release** | there is a **platform capability / tooling** to create |
 | **how** | Architecture Sketch | the sources, pipeline and outputs on the Data Platform |
+| **ask** | **Data Demand** _(received)_ | a downstream product needs data you do not yet serve (carries its intent + the acceptance contract it will test delivery against) |
 
 Most data-team work is a business problem, so the **Information Product Canvas** is the usual "what". Use a **Press Release** when you are building reusable platform capability. A large capability can have both: multiple Press Releases for the capabilities and a Canvas per Information Product under it.
+
+A fourth input, a **Data Demand**, sometimes arrives alongside a Canvas: a downstream product's ask for data the warehouse does not yet serve. It pins the grain and pre-fills the data contracts, and it is the sharpest input the skill reads. The skill frames it, it does not author the resulting Data Contract or run the demand's checks.
 
 You can start with only one completed Pattern Template. The skill works with what you have and tells you what the missing pieces would change.
 
@@ -62,7 +65,7 @@ It builds understanding, scopes and frames. It does not Design, Build or Deploy 
 
 `pattern-templates/` holds two worked examples, one per form of the "what":
 
-- `pattern-templates/business-problem/` scopes an **Information Product Canvas** (the canonical Revenue Metrics canvas). See how the skill pins the grain the canvas leaves open, maps Core Business Events and Systems of Capture to sources, slices seven Business Questions into buildable increments, and catches two boundary conflicts hidden in the Will/Won't.
+- `pattern-templates/business-problem/` scopes an **Information Product Canvas** (the canonical Revenue Metrics canvas). See how the skill pins the grain the canvas leaves open, maps Core Business Events and Systems of Capture to sources, slices seven Business Questions into buildable increments, and catches two boundary conflicts hidden in the Will/Won't. It is paired with a received **Data Demand** for the same product, so you can see the skill read a demand as a fourth input: pin the grain from its intent and pre-fill the data contracts from its acceptance checks.
 - `pattern-templates/platform-capability/` is the **AI Analyst** platform capability, given as a **Press Release** with its **Mission Command Statement** and **Architecture Sketch**. Point the skill at it and ask it to scope: it has to decompose the press release into Information Products, pin the grain the artefacts leave open, weigh the mission's Boundaries, and notice that the architecture is a generic LLM-agent pattern not yet mapped to the AgileData stack.
 
 ## What is in here
@@ -78,7 +81,7 @@ agiledataguides-askai-data-work-scope/
 │   ├── scope-understanding-template.md  the output template (clear, questions, then structured scope)
 │   └── session-log-template.md          the per-session log, saved for iterating the skill
 └── pattern-templates/
-    ├── business-problem/             an Information Product Canvas (Revenue Metrics)
+    ├── business-problem/             an Information Product Canvas + a received Data Demand (Revenue Metrics)
     └── platform-capability/          a Mission + Press Release + Architecture Sketch (AI Analyst)
 ```
 

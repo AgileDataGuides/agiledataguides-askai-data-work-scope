@@ -1,6 +1,6 @@
 # Reading the artefacts
 
-Your read of the scope is only as good as your read of the inputs. The team is handed completed **Pattern Templates** carrying three dimensions of intent: the **WHY** (the outcome), the **WHAT** (what to build), and the **HOW** (the technical shape). These are not one template each: a Mission carries mostly WHY but also names WHATs (its boundaries and key tasks), and a Press Release carries mostly WHAT but also WHYs (its benefits trace to the mission). The dominant WHAT comes in one of two forms: an **Information Product Canvas** for a business problem, or an **AgileData Press Release** for a platform capability. Each template carries part of the intent, and each has a characteristic way of being weak. This reference covers, for each: what it is, what a good one contains, how to read it for scope, the gaps to flag, and how to cope when it is thin or missing.
+Your read of the scope is only as good as your read of the inputs. The team is handed completed **Pattern Templates** carrying three dimensions of intent: the **WHY** (the outcome), the **WHAT** (what to build), and the **HOW** (the technical shape). These are not one template each: a Mission carries mostly WHY but also names WHATs (its boundaries and key tasks), and a Press Release carries mostly WHAT but also WHYs (its benefits trace to the mission). The dominant WHAT comes in one of two forms: an **Information Product Canvas** for a business problem, or an **AgileData Press Release** for a platform capability. A fourth input sometimes arrives: a **received Data Demand** (section 4), a downstream product's ask for data the warehouse does not yet serve, carrying its intent and the acceptance contract it will test delivery against. Each template carries part of the intent, and each has a characteristic way of being weak. This reference covers, for each: what it is, what a good one contains, how to read it for scope, the gaps to flag, and how to cope when it is thin or missing.
 
 The discipline that runs through all of them: separate **stated** (what it says) from **implied** (your inference) from **unknown** (what it leaves open). When you quote the artefact you are on solid ground. When you infer, mark it. When you hit an unknown, turn it into a question for the team rather than filling it yourself.
 
@@ -170,6 +170,51 @@ With a why and a what but no architecture, you can frame Information Products an
 
 ---
 
+## 4. Data Demand: a received ask (optional fourth input)
+
+### What it is
+
+A **data demand** is an ask raised by a downstream product (an Information Product app) when it needs data the warehouse does not yet serve: a new consume object, a missing column, a wrong grain. Unlike the three templates above, which a stakeholder authors to express a vision, a demand is **received** by the data team from the product, and it arrives already pointed at a specific consume object and grain. It is the AgileData protocol for how the question travels from a product to the data team. Its canonical copy lives in the product repo's `outbox/data-work-needed/<slug>.md`, and a copy is handed to the data team.
+
+A demand carries exactly two things:
+
+1. **Intent**: the decisions the data supports and the questions being asked, in business language, plus the one hard structural constraint (usually grain), evidence the capture exists upstream, and the traps already known.
+2. **An acceptance contract**: the read-only checks the product will run when the data lands. Green means the intent was met. Checks name observable outcomes ("every event carries its date", "history reconstructs", "the change count is at least the source's"), never implementations. They cover the same five clause groups a Data Contract answers with: shape, grain, keys, load type, rules.
+
+### What it always carries, and never carries
+
+| Always | Never |
+|---|---|
+| The decisions the data supports | Table or view designs |
+| Questions in business language | Column lists offered as the solution |
+| The one hard constraint (usually grain) | Load patterns, SQL, tool choices |
+| Evidence the capture exists upstream | The producer's Data Contract |
+| A `What we are NOT asking for` section | Staff contacts or customer data values |
+| The acceptance contract | |
+
+The boundary rule: **a demand says what the product needs to be able to answer, never how to build it.** Precision is not prescription: naming the exact consume object (`consume.customer`), the exact source, or the exact grain is wanted, that is the demand being testable. The line is crossed when the demand starts designing what does not exist yet.
+
+### How to read it for scope
+
+A demand is the sharpest input you can get, because it arrives pre-scoped and testable. Read it in this order:
+
+1. **Intent to Information Products.** The decisions and questions map straight to one or more Information Products, at a grain the demand usually states outright (where a Canvas leaves grain open). This is your line-of-sight target.
+2. **Acceptance contract to the contracts implied.** The checks pre-fill the *Data contracts implied* table: the consume object, grain, keys, load type and rules are already named and testable. Carry them across as the producer's target, marked *(from demand)*. You identify the contracts; you do not author them or run the checks here.
+3. **Evidence of capture to the sources.** The demand names where the data is captured upstream. Confirm those sources exist in the tenancy (catalog if MCP is connected), exactly as for a Canvas's Systems of Capture.
+
+### Gaps to flag
+
+- **A demand that carries the how.** Column lists, table designs, load patterns or SQL mean the ask has overstepped and is quietly transferring the modelling decision from the person who knows the warehouse to the person who knows the app. Flag it and hand the how back to the data team.
+- **No acceptance contract, or checks that are not runnable.** A demand with no testable checks cannot be proven fit on delivery, so "fit for purpose" becomes a matter of opinion. Ask for the checks.
+- **Intent with no grain.** The one constraint a demand should pin is grain. If it is missing, that is the first question, the same as for a Canvas.
+- **A demand that contradicts a Canvas or Mission for the same product.** When both are supplied, the demand's intent and grain should agree with the Canvas's questions and the Mission's outcome. A mismatch (a demand at monthly grain against a Canvas question about daily movements) is a sharp question.
+
+### When it is thin or missing
+
+A demand is optional, and most scoping runs without one. When it is present it is a gift: it pins grain and pre-fills the contracts. When it is thin (intent but no acceptance contract, or an acceptance contract with no runnable checks), name what is missing and recommend completing it before the data team commits, because the acceptance contract is the only thing that makes delivery testable.
+
+---
+
 ## Reading them together (the line of sight)
 
 The artefacts are most valuable as a set. The cross-checks between them are the line of sight (SKILL.md, method step 2). In short:
@@ -185,5 +230,11 @@ The artefacts are most valuable as a set. The cross-checks between them are the 
 
 - Benefit ↔ Mission: does every benefit serve a mission outcome, and every mission outcome appear as a benefit?
 - Benefit ↔ Architecture: does every benefit have an architectural home, and every component serve a benefit?
+
+**When a Data Demand is present (alongside a Canvas or Mission):**
+
+- Demand ↔ Canvas / Mission: does the demand's intent and grain agree with the Canvas's questions and the Mission's outcome? A mismatch is a sharp question.
+- Demand ↔ contracts implied: does every contract the scope needs map to an acceptance check, and every check to a contract clause group (shape, grain, keys, load type, rules)?
+- Demand boundary: does the demand stay on the what, or has it strayed into the how? A demand carrying column lists or SQL is a break to flag, not a link that holds.
 
 A coherent set, where each link holds, is the strongest signal that the scope is healthy. Each break is a sharp, specific question for the team, and surfacing those questions is the core of helping them understand the scope.
