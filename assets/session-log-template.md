@@ -6,7 +6,7 @@
 ## Session metadata
 
 - **Date / time:** <local timestamp>
-- **Templates provided:** <which of Mission / Canvas / Press Release / Architecture Sketch were present, by name>
+- **Templates provided:** <which of Mission / Canvas / Press Release / Architecture Sketch / Data Demand were present, by name>
 - **Tenancy / MCP:** <named tenancy, or "none, scoped from the templates only">
 - **Dominant WHAT:** <business problem (Canvas) / platform capability (Press Release)>
 - **Skill version:** <the SKILL.md the session ran against, if known (e.g. git SHA or date)>

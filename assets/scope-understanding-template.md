@@ -4,6 +4,7 @@
 > Lead with what's clear and the open questions. Keep it tight: tables not prose, a cell holds a phrase.
 > Stated = quoted from a template. Implied = our inference. Unknown = needs the team.
 > Note which WHAT you read: an Information Product Canvas (business problem) or a Press Release (platform capability).
+> If a Data Demand was supplied, note it: it pins grain and pre-fills the contracts implied below.
 
 ## What's clear
 
@@ -85,11 +86,21 @@ Thinnest valuable slice first, then increments. Each is one or a few Information
 
 ### Data contracts implied
 
-Identified here, not authored (authoring is the next skill).
+Identified here, not authored (authoring is the next skill). If a **data demand** was supplied, its acceptance contract pre-fills this table: the consume object, grain and checks are already named. Carry them across and mark them *(from demand)*. You identify the contracts, you do not author them or run the checks.
 
 | Contract | For Information Product | Grain | Business key | Load type | Already exists? |
 |---|---|---|---|---|---|
 | <data set> | 1 | <grain> | <{entity}_key> | change_data / event_data | yes / no |
+
+> **Acceptance contract (only if a demand was supplied):** the read-only checks the product will run on delivery, by clause group. These are the producer's target and the fitness test, recorded here, not run or authored by this skill.
+>
+> | Clause group | Check (observable outcome, from the demand) |
+> |---|---|
+> | shape | <e.g. one row carries the named measures, typed> |
+> | grain | <e.g. exactly one row per ... per ...> |
+> | keys | <e.g. {entity}_key is unique and non-null> |
+> | load type | <e.g. history reconstructs "as at" any date> |
+> | rules | <e.g. named exclusions applied; fresh by the stated cadence> |
 
 ### Scope boundaries (from a Canvas's Will/Won't, or the Mission's Boundaries)
 

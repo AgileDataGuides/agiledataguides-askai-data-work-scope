@@ -1,6 +1,6 @@
 # The AgileData delivery model
 
-This is the vocabulary that turns intent into buildable scope. The three artefacts describe demand (why, what, how). This model describes supply (the things a data team actually builds). Scoping is the act of meeting the demand with the supply, using these terms precisely.
+This is the vocabulary that turns intent into buildable scope. The three artefacts describe demand (why, what, how), and a received Data Demand carries a fourth, pre-scoped ask. This model describes supply (the things a data team actually builds). Scoping is the act of meeting the demand with the supply, using these terms precisely.
 
 Use the exact words. A team that says "table" when they mean "Information Product", or "field" when they mean "grain", loses the ability to reason about scope. Precision here is not pedantry, it is how the line of sight stays visible.
 
@@ -9,6 +9,7 @@ Use the exact words. A team that says "table" when they mean "Information Produc
 - [Information Product: the unit of demand](#information-product)
 - [Grain: the most important decision](#grain)
 - [Concepts, Details, Events: the modelling primitives](#concepts-details-events)
+- [Data Demand: the received ask](#data-demand)
 - [Data Contract: the agreement before the build](#data-contract)
 - [Business Key: the natural identifier](#business-key)
 - [Load Type: change data vs event data](#load-type)
@@ -55,6 +56,17 @@ The modelling primitives. From the question and the grain, name:
 
 In scoping, naming the Concepts and Events for each Information Product tells you what has to be modelled, which tells you the pipeline work. Concepts and Events that already exist in the tenancy are reuse. New ones are build.
 
+## Data Demand
+
+The **received ask a downstream product raises** when it needs data the warehouse does not yet serve. It is the demand-side counterpart to the supply terms below. A demand carries two things and no more:
+
+- **Intent**: what the product must be able to answer and why, in business language, with the one hard constraint (usually grain) and evidence the capture exists upstream.
+- **An acceptance contract**: the read-only checks the product runs when the data lands, where green means the intent was met. The checks cover the same five clause groups a Data Contract answers with (shape, grain, keys, load type, rules), so demand and contract can be diffed clause for clause.
+
+A demand never carries the how: no table designs, no column lists, no load patterns, no SQL. It states the need; the producer owns the build.
+
+In scoping, a received demand is a fourth input template. It pins the grain a Canvas leaves open and **pre-fills the contracts implied**: its acceptance contract already names the consume object, grain and checks. Carry those across as the producer's target, marked *(from demand)*; do not author the contract or run the checks here. A **Data Demand** (the consumer's ask) and a **Data Contract** (the producer's answer) are a pair: the demand asks, the contract answers.
+
 ## Data Contract
 
 The **agreed shape of a data set before it is built.** No data gets built without one. A contract states:
@@ -66,6 +78,8 @@ The **agreed shape of a data set before it is built.** No data gets built withou
 - **rules**: quality, allowed values, freshness
 
 In scoping, each Information Product implies one or more Data Contracts (one per data set it needs). You do not author the contracts here, that is the next skill, but you do identify which contracts the scope requires. "This Information Product needs three contracts, two of which we already have" is a scope statement.
+
+When a **Data Demand** was supplied (see above), its acceptance contract pre-states these five clause groups as testable checks for the contract it needs, so you carry them into the contracts-implied table rather than re-deriving them. The demand is the ask; this contract is the producer's answer to it, authored on the Data Team journey after framing.
 
 ## Business Key
 
